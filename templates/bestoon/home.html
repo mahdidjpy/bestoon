@@ -1,0 +1,16 @@
+{% load static %}
+<html>
+<head>
+<link rel="stylesheet" href="{% static 'bestoon/style.css' %}">
+</head>
+<body>
+this is a home page 
+
+{% for obj in objs %}
+<p>	
+	{{ obj.jdate }}
+	</p>
+{% endfor %}
+
+</body>
+</html>
