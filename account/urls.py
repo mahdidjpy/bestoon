@@ -2,7 +2,8 @@ from django.urls import path
 from .views import ( 
 Profile, Home, Login, IncumSubmit,
  ExpenseSubmit, UpdateIncome, UpdateExpense,
- DeleteExpense, DeleteIncome, Registration 
+ DeleteExpense, DeleteIncome, Registration,
+ activate 
   )
 from django.contrib.auth.views import LogoutView
 
@@ -20,8 +21,8 @@ urlpatterns= [
 	path('delete/expense/<int:pk>', DeleteExpense.as_view(), name='delete_expense'),
 	path('login/', Login.as_view(), name='login'),
 	path('logout/', LogoutView.as_view(), name='logout'),
-	path('signup/', Registration.as_view(), name='signup')
-
+	path('signup/', Registration.as_view(), name='signup'),
+	path('activate/<str:uidb64>/<str:token>',activate, name='activate')
 ]
 
 
