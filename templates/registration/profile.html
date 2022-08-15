@@ -1,0 +1,51 @@
+{% extends 'registration/index.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}
+پروفایل
+{% endblock %}
+
+
+{% block main_content%}
+
+
+<div class="col-md-12">
+            <div class="card card-primary">
+              <div class="card-header">
+              	<h3 class="card-title mb-0 float-left"  > پروفایل </h3>
+</div>
+<form method="post">
+	{% csrf_token %}
+	<div style="margin : 100px 250px;">
+	 <div class="row">
+      <div class="col-12">
+      		{{form.username|as_crispy_field}}
+      	 </div>
+      	 <div class="col-12">
+      		{{form.email|as_crispy_field}}
+      	 </div>
+      	 <div class="row">
+      	 <div class="col-6">
+      		{{form.first_name|as_crispy_field}}
+      	 </div>
+      	 <div class="col-6">
+      		{{form.last_name|as_crispy_field}}
+      	 </div>
+      	 </div>
+      	 <div class="col-12">
+
+      	 	<button type="submit" class=" btn btn-success">
+  ارسال</button>
+</div>
+  		</div>
+      </div>
+</div>
+
+
+
+</form>
+
+
+
+{% endblock %}

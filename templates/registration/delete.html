@@ -1,0 +1,46 @@
+{% extends 'registration/index.html' %}
+{% load crispy_forms_tags %}
+
+
+
+{% block title %}
+
+{% if request.resolver_match.url_name == 'delete_income' %}
+حذف درامد
+{% elif request.resolver_match.url_name == 'delete_expense' %}
+حذف خرج
+{% endif %}
+{% endblock %}
+
+
+
+{% block main_content%}
+
+<div class="col-md-12">
+            <div class="card card-primary">
+              <div class="card-header">
+              	{% if request.resolver_match.url_name == 'delete_income' %}
+                <h3 class="card-title mb-0 float-left"  >حذف درامد</h3>
+                {% elif request.resolver_match.url_name == 'delete_expense' %}
+                <h3 class="card-title mb-0 float-left"  >حذف خرج</h3>
+                {% endif %}
+              </div>
+               <form method="post"> {% csrf_token %}
+                    <p class="py-4"> ایا از حذف" {{object }}" ااطمینان دارید؟ </p>
+                    <input type="submit" class = 'btn btn-danger' value = حذف >
+                    <a href="{% url 'account:home' %}"><button type="button" class = 'btn btn-danger'> بازگشت  </button></a>
+
+
+                </form>
+
+            
+  		</div>
+      </div>
+</div>
+
+
+
+
+
+
+{% endblock %}

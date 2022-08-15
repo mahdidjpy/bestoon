@@ -1,0 +1,56 @@
+{% extends 'registration/index.html' %}
+{% load crispy_forms_tags %}
+
+
+
+{% block title %}
+{% if request.resolver_match.url_name == 'update_income' %}
+ویرایش درامد
+{% elif request.resolver_match.url_name == 'update_expense' %}
+ویرایش خرج
+{% endif %}
+{% endblock %}
+
+
+
+{% block main_content%}
+
+<div class="col-md-12">
+            <div class="card card-primary">
+              <div class="card-header">
+                {% if request.resolver_match.url_name == 'update_income' %}
+                    <h3 class="card-title mb-0 float-left"  > ویرایش درامد </h3>
+                {% elif request.resolver_match.url_name == 'update_expense' %}
+                    <h3 class="card-title mb-0 float-left"  > ویرایش خرج </h3>
+                {% endif %}
+                
+              </div>
+<form method="post">
+	{% csrf_token %}
+	<div style="margin : 100px 250px;">
+	 <div class="row">
+      <div class="col-12">
+        {{ form.title|as_crispy_field }}
+      </div>
+      <div class="col-12">
+      	{{ form.amount|as_crispy_field }}
+      	
+      </div>
+      <div class="row">
+      	<div class="col-12">
+
+      		{{ form.user|as_crispy_field }}
+      		
+      	</div>
+      	<div class="col-12">
+      	<button type="submit" class=" btn btn-success">
+  ارسال</button>
+
+
+  		</div>
+      </div>
+</div>
+</form>
+
+
+{% endblock %}
