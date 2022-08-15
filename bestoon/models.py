@@ -2,6 +2,7 @@ from django.db import models
 from account.models import User
 from extensions.utils import jalali_converter
 from django.utils import timezone
+from django.urls import reverse
 
 
 
@@ -10,6 +11,10 @@ class Income(models.Model):
 	amount = models.BigIntegerField(verbose_name='درامد')
 	date = models.DateTimeField(auto_now_add=True)
 	user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+
+
+	def get_absolute_url(self):
+		return reverse('account:home')
 
 
 	def jdate(self):
@@ -36,6 +41,11 @@ class Expense(models.Model):
 
 	def __str__(self):
 		return '{}-{}-{}'.format(self.title, self.amount, self.date)
+
+
+
+	def get_absolute_url(self):
+		return reverse('account:home')	
 
 
 	class Meta:
