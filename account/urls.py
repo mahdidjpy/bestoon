@@ -3,9 +3,9 @@ from .views import (
 Profile, Home, Login, IncumSubmit,
  ExpenseSubmit, UpdateIncome, UpdateExpense,
  DeleteExpense, DeleteIncome, Registration,
- activate 
+ activate, ChangePassword 
   )
-from django.contrib.auth.views import LogoutView
+from django.contrib.auth.views import LogoutView, PasswordChangeDoneView
 
 
 
@@ -22,7 +22,10 @@ urlpatterns= [
 	path('login/', Login.as_view(), name='login'),
 	path('logout/', LogoutView.as_view(), name='logout'),
 	path('signup/', Registration.as_view(), name='signup'),
-	path('activate/<str:uidb64>/<str:token>',activate, name='activate')
+	path('activate/<str:uidb64>/<str:token>',activate, name='activate'),
+	path('password_change/',ChangePassword.as_view(), name='password_change'),
+	path('password_change/done/',PasswordChangeDoneView.as_view(), name='password_change_done')
+
 ]
 
 

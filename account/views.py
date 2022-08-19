@@ -15,6 +15,7 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from django.core.mail import EmailMessage
+from django.contrib.auth.views import PasswordChangeView
 
 
 class Home(LoginRequiredMixin, ListView):
@@ -188,4 +189,6 @@ def activate(request, uidb64, token):
 		return HttpResponse('لینک نامعتر است')
 
 
+class ChangePassword(PasswordChangeView):
+    success_url = reverse_lazy('account:password_change_done')
 
