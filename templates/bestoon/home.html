@@ -2,15 +2,132 @@
 <html>
 <head>
 <link rel="stylesheet" href="{% static 'bestoon/style.css' %}">
+ <link rel="stylesheet" href="{% static 'registration/admin/plugins/fontawesome-free/css/all.min.css' %}">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Tempusdominus Bbootstrap 4 -->
+  <link rel="stylesheet" href="{% static 'registration/admin/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css' %}">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="{% static 'registration/admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="{% static 'registration/admin/plugins/jqvmap/jqvmap.min.css' %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'registration/admin/dist/css/adminlte.min.css' %}">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="{% static 'registration/admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css' %}">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="{% static 'registration/admin/plugins/daterangepicker/daterangepicker.css' %}">
+  <!-- summernote -->
+  <link rel="stylesheet" href="{% static 'registration/admin/plugins/summernote/summernote-bs4.css' %}">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- Bootstrap 4 RTL -->
+  <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.2.1/css/bootstrap.min.css">
+  <!-- Custom style for RTL -->
+  <link rel="stylesheet" href="{% static 'registration/admin/dist/css/custom.css' %}">
+  <!-- chart ########################################################################### -->
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'registration/admin/plugins/fontawesome-free/css/all.min.css' %}">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'registration/admin/dist/css/adminlte.min.css' %}">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
 </head>
 <body>
-this is a home page 
+<h2 style="text-align:center;"> خوش امدیدی  {% if user.get_full_name %}{{user.get_full_name}} {% else %} {{user}} {% endif%}</h2> 
 
-{% for obj in objs %}
-<p>	
-	{{ obj.jdate }}
-	</p>
-{% endfor %}
+{% if incomecount %}
+
+ <div class="card-header" style="    background-color: rgb(9 255 188 / 23%);">
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover">
+                  <thead>
+                  	<tr style="color: darkblue;text-align: center;">
+                  		<th>درامد</th>
+                  	</tr>
+                    <tr style="color: darkblue;">
+                      <th>تعداد</th>
+                      <th>مجموع</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                       
+                            <tr style="color: darkblue;">
+                       
+                                <td>{{ incomecount.title__count}}</td>
+                                <td>{{ incomesum.amount__sum }}</td>
+  
+                            </tr>
+                      
+                  </tbody>
+                </table>
+            </div>
+
+</div>   
+{% endif %}
+{% if expensecount %}
+
+ <div class="card-header" style=" top:30px;     background-color: rgb(9 255 188 / 23%);">
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                 <table class="table table-hover">
+                  <thead>
+                  	<tr style="color: darkblue;text-align: center;">
+                  		<th>خرج</th>
+                  	</tr>
+                    <tr style="color: darkblue;">
+                      <th>تعداد</th>
+                      <th>مجموع</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                       
+                            <tr style="color: darkblue;">
+                       
+                                <td>{{ expensecount.title__count}}</td>
+                                <td>{{ expensesum.amount__sum}}</td>
+  
+                            </tr>
+                       
+                  </tbody>
+                </table>
+              
+            </div>
+
+</div>   
+{% endif %}
+<div class="card-header" style="top:50px;    background-color: rgb(9 255 188 / 23%);">
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover">
+                  <thead>
+                  	<tr style="color: darkblue;text-align: center;">
+                  		<th>دخل و خرج</th>
+                  	</tr>
+                    <tr style="color: darkblue;">
+                      <th>وضعیت</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                       
+                            <tr style="color: darkblue;">
+                       
+                                
+                                <td>{{ difference }}</td>
+  
+                            </tr>
+                      
+                  </tbody>
+                </table>
+            </div>
+
+</div>   
+
 
 </body>
 </html>
