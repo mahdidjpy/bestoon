@@ -8,7 +8,6 @@ Profile, Home, Login, IncumSubmit,
 from django.contrib.auth.views import LogoutView, PasswordChangeDoneView
 
 
-
 app_name = 'account'
 urlpatterns= [
 	path('',Home.as_view(), name='home'),
@@ -25,6 +24,7 @@ urlpatterns= [
 	path('activate/<str:uidb64>/<str:token>',activate, name='activate'),
 	path('password_change/',ChangePassword.as_view(), name='password_change'),
 	path('password_change/done/',PasswordChangeDoneView.as_view(), name='password_change_done')
+	
 
 ]
 
