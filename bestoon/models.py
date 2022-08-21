@@ -19,10 +19,11 @@ class Income(models.Model):
 
 	def jdate(self):
 		return jalali_converter(self.date)
+	jdate.short_description = "زمان انتشار "	
 
 
 	def __str__(self):
-		return '{}-{}-{}'.format(self.title, self.amount, self.date)
+		return '{}'.format(self.title)
 
 
 	class Meta:
@@ -38,9 +39,10 @@ class Expense(models.Model):
 
 	def jdate(self):
 		return jalali_converter(self.date)
+	jdate.short_description = "زمان انتشار "	
 
 	def __str__(self):
-		return '{}-{}-{}'.format(self.title, self.amount, self.date)
+		return '{}'.format(self.title)
 
 
 
