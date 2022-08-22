@@ -3,9 +3,10 @@ from .models import Expense, Income
 from account.models import User
 from django.db.models import Sum, Count
 from django.http import JsonResponse
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class HomePage(ListView):
+class HomePage(LoginRequiredMixin, ListView):
 	model = User
 	template_name = 'bestoon/home.html'
 
